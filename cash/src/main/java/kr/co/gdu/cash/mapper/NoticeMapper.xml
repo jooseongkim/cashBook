@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.mapper.NoticeMapper">
+	<select id="selectLastestNoticeList"
+		resultType="kr.co.gdu.cash.vo.Notice">
+		select
+		notice_id as noticeId,
+		notice_title as noticeTitle,
+		notice_content as noticeContent,
+		notice_date as noticeDate
+		from notice
+		order by notice_date
+		desc limit 0, 5
+	</select>
+	<!--noticeListByPage -->
+	<select id="selectNoticeListByPage"
+		resultType="kr.co.gdu.cash.vo.Notice" parameterType="java.util.Map">
+		select
+		notice_id
+		noticeId,
+		notice_title noticeTitle,
+		notice_date noticeDate
+		from notice
+		order by notice_date
+		desc
+		limit #{beginRow}, #{rowPerPage}
+	</select>
+	<!--입력 -->
+	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		INSERT INTO notice(
+		notice_title,
+		notice_content,
+		notice_date
+		) VALUES(
+		#{noticeTitle},
+		#{noticeContent},
+		NOW()
+		)
+	</insert>
+	<!--수정 -->
+	<update id="modifyNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		UPDATE notice
+		SET
+		#{noticeTitle},
+		#{noticeContent}
+		WHERE
+		#{noticeId}
+	</update>
+	<!--상세보기 -->
+	<select id="selectNoticeOne"
+		resultType="kr.co.gdu.cash.vo.Notice" parameterType="Integer">
+		select
+		notice_id as
+		noticeId,
+		notice_title noticeTitle,
+		notice_content noticeContent,
+		notice_date noticeDate
+		from notice
+		where notice_id = #{noticeId}
+	</select>
+
+	<!--삭제-->
+	<delete id="removeNotice" parameterType="Integer">
+	delete from notice
+	where notice_id = #{noticeId}
+	</delete>
+</mapper>
