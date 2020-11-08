@@ -22,8 +22,15 @@ public class NoticeController {
 	@GetMapping("/admin/noticeList")
 	public String noticeList(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage
 			) {
-		List<Notice> noticeList = noticeService.getNoticeList();
+		int rowPerPage = 10;
+		List<Notice> noticeList = noticeService.getNoticeListByPage(currentPage, rowPerPage);
+		
+		int totalCount = noticeService.getCount();	
+		int lastPage = totalCount / rowPerPage;	
+		
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
 		// noticeService 호출하기
 		return "noticeList";
 	}
