@@ -10,5 +10,6 @@
 	<a href="/admin/cashbookByMonth">월별 가계부</a>
 	<a href="/admin/noticeList">공지사항</a>
 	<a href="/admin/logout">logout</a>
+	<a href="http://localhost:8080/cashStats.html">연도별 월간 총 지출액</a>
 </body>
 </html>

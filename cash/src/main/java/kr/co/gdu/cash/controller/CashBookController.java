@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,21 +39,33 @@ public class CashBookController {
 	}
 
 	// 지출 수입 입력
-	@GetMapping("/admin/addCashbook") // value 생략가능
-	public String addCashbook(Model model, @RequestParam(name = "currentYear", required = true) int currentYear,
-			@RequestParam(name = "currentMonth", required = true) int currentMonth,
-			@RequestParam(name = "currentDay", required = true) int currentDay) {
+	@GetMapping("/admin/addCashbook/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
+	public String addCashbook(Model model, @PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay) {
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList", categoryList);
 		return "addCashbook"; // 포워딩 역할을 함.
 	}
 
-	// 지출 수입 상세보기
-	@GetMapping("/admin/cashbookByDay") // value 생략가능
-	public String cashbookByDay(Model model, @RequestParam(name = "target", defaultValue = "") String target,
+	// 캐쉬 내역 삭제
+	@GetMapping("/admin/removeCashbook")
+	public String removeCashbook(@RequestParam(name = "cashbookId", defaultValue = "-1") int cashbookId,
 			@RequestParam(name = "currentYear", required = true) int currentYear,
 			@RequestParam(name = "currentMonth", required = true) int currentMonth,
 			@RequestParam(name = "currentDay", required = true) int currentDay) {
+
+		cashbookService.removeCashbook(cashbookId);
+		return "redirect:/admin/cashbookByDay?currentYear=" + currentYear + "&currentMonth=" + currentMonth
+				+ "&currentDay=" + currentDay;
+	}
+
+	// 지출 수입 상세보기
+	@GetMapping("/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
+	public String cashbookByDay(Model model, @PathVariable(name = "target") String target,
+			@PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay) {
 		Calendar targetDay = Calendar.getInstance();
 		targetDay.set(Calendar.YEAR, currentYear);
 		targetDay.set(Calendar.MONTH, currentMonth - 1);
@@ -72,7 +85,7 @@ public class CashBookController {
 		return "cashbookByDay";
 	}
 
-	//
+	// 월 별 가계부
 	@GetMapping(value = "/admin/cashbookByMonth")
 	// requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) =
 	// ("request.getParamater("paramMonth");)
@@ -134,4 +147,39 @@ public class CashBookController {
 		// model.addAttribute("list", list);
 		return "cashbookByMonth";
 	}
+
+	// 캐쉬내역 수정 폼
+	@GetMapping("/admin/modifyCashbook/{cashbookId}/{currentYear}/{currentMonth}/{currentDay}")
+	public String modifyCashbook(Model model, @PathVariable(name = "cashbookId", required = true) int cashbookId,
+			@PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay) {
+
+		Cashbook cashbook = cashbookService.getCashbook(cashbookId);
+
+		List<Category> categoryList = categoryService.getCategoryList();
+
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("cashbook", cashbook);
+
+		model.addAttribute("currentYear", currentYear);
+		model.addAttribute("currentMonth", currentMonth);
+		model.addAttribute("currentDay", currentDay);
+
+		model.addAttribute("type", 2);
+		return "modifyCashbook";
+	}
+
+	// 캐쉬내역 수정 액션
+	@PostMapping("/admin/modifyCashbook/{currentYear}/{currentMonth}/{currentDay}")
+	public String modifyCashbook(Cashbook cashbook,
+			@PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay) {
+
+		cashbookService.modifyCashbook(cashbook);
+		return "redirect:/admin/cashbookByDay?currentYear=" + currentYear + "&currentMonth=" + currentMonth
+				+ "&currentDay=" + currentDay;
+	}
+
 }

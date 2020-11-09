@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -49,23 +50,23 @@ public class NoticeController {
 	}
 
 	// 공지사항 상세보기 4
-	@GetMapping("/admin/noticeOne")
-	public String noticeOne(Model model, @RequestParam(value = "noticeId") int noticeId) {
+	@GetMapping("/admin/noticeOne/{noticeId}")
+	public String noticeOne(Model model, @PathVariable(value = "noticeId") int noticeId) {
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
 		return "noticeOne";
 	}
 
 	// 공지사항 삭제 5
-	@GetMapping("/admin/removeNotice")
-	public String  removeNotice(Model model, @RequestParam(value = "noticeId") int noticeId) {
+	@GetMapping("/admin/removeNotice/{noticeId}")
+	public String  removeNotice(Model model, @PathVariable(value = "noticeId") int noticeId) {
 		noticeService.removeNoticeByNoticeId(noticeId);
 		return "redirect:/admin/noticeList";
 	}
 
 	// 공지사항 수정 폼 6
-	@PostMapping("/admin/modifyNotice")
-	public String modifyNotice(Model model, @RequestParam(value = "noticeId") int noticeId) {
+	@PostMapping("/admin/modifyNotice/{noticeId}")
+	public String modifyNotice(Model model, @PathVariable(value = "noticeId") int noticeId) {
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
 		return "modifyNotice";

@@ -12,8 +12,10 @@ import kr.co.gdu.cash.vo.Category;
 @Service
 @Transactional
 public class CategoryService {
-	@Autowired CategoryMapper categoryMapper;
-	public List<Category> getCategoryList(){
+	@Autowired
+	CategoryMapper categoryMapper;
+
+	public List<Category> getCategoryList() {
 		return categoryMapper.selectCategoryList();
 	}
 }

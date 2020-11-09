@@ -24,7 +24,7 @@
 				<c:forEach var="n" items="${noticeList}">
 					<tr>
 						<td>${n.noticeId}</td>
-						<td><a href="/admin/noticeOne?noticeId=${n.noticeId}">${n.noticeTitle}</a></td>
+						<td><a href="/admin/noticeOne/${n.noticeId}">${n.noticeTitle}</a></td>
 						<%-- <td>${n.noticeContent}</td> --%>
 						<td>${n.noticeDate}</td>
 						<%--  <!-- n.getNoticeContent() --> --%>
