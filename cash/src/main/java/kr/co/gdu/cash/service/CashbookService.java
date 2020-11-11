@@ -60,4 +60,15 @@ public class CashbookService {
 		return cashBookMapper.selectCashbookOne(cashbookId);
 	}
 
+	public List<Cashbook> getCashbookListByPage(int currentPage, int rowPerPage) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("beginRow", (currentPage - 1) * rowPerPage);
+		map.put("rowPerPage", rowPerPage);
+		return cashBookMapper.selectCashbookListByPage(map);
+	}
+	
+	public List<Cashbook> getCashbookListAll() {
+		return cashBookMapper.selectCashbookListAll();
+	}
+
 }
