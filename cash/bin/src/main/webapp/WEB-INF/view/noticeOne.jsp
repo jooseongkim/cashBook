@@ -13,25 +13,25 @@
 	<h1>공지사항 상세보기</h1>
 	<div>
 		<table border="1">
-				<tr>
-					<td>번호</td>
-					<td>${notice.noticeId}</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td>${notice.noticeTitle}</td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td>${notice.noticeContent}</td>
-				</tr>
-				<tr>
-					<td>생성 날짜</td>
-					<td>${notice.noticeDate}</td>
-				</tr>
+			<tr>
+				<td>번호</td>
+				<td>${notice.noticeId}</td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td>${notice.noticeTitle}</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>${notice.noticeContent}</td>
+			</tr>
+			<tr>
+				<td>생성 날짜</td>
+				<td>${notice.noticeDate}</td>
+			</tr>
 		</table>
-		<a href="/admin/removeNotice?noticeId=${notice.noticeId}">삭제</a> 
-		<a href="/admin/modifyNotice?noticeId=${notice.noticeId}">수정</a>
+		<a href="/admin/removeNotice/${notice.noticeId}">삭제</a> <a
+			href="/admin/modifyNotice/${notice.noticeId}">수정</a>
 	</div>
 </body>
 </html>

@@ -43,10 +43,10 @@
 	<update id="modifyNotice" parameterType="kr.co.gdu.cash.vo.Notice">
 		UPDATE notice
 		SET
-		#{noticeTitle},
-		#{noticeContent}
+		notice_title = #{noticeTitle},
+		notice_content = #{noticeContent}
 		WHERE
-		#{noticeId}
+		notice_id = #{noticeId}
 	</update>
 	<!--상세보기 -->
 	<select id="selectNoticeOne"

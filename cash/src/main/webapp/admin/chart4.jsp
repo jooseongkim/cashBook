@@ -12,10 +12,10 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>Chart 1</h1>
+	<h1>Chart 4</h1>
 	<!--차트1 생성-->
 	<div>
-		<canvas id="chart1"></canvas>
+		<canvas id="chart4"></canvas>
 	</div>
 	<!--table-->
 	<div></div>

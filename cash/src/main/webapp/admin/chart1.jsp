@@ -15,22 +15,38 @@
 	<h1>Chart 1</h1>
 	<!--차트1 생성-->
 	<div>
-		<canvas id="chart1"></canvas>
+		<canvas id="pieChart"></canvas>
 	</div>
 	<!--table-->
 	<div></div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">
+
 	$.ajax({
-		url:'',
-		type:'',
-		data:'',
-		success:funtion(data){
-				/*
-				json문자열 -> 데이터셋(chart.js가 원하는 데이터셋) -> chart
-				  */
-			}
-		});
+		url : '/totalOutAndInByYear/2019',
+		type : 'get',
+		success : function(data) {
+			let randomColor1 = Math.floor(Math.random() * 256);
+			let randomColor2 = Math.floor(Math.random() * 256);
+			let randomColor3 = Math.floor(Math.random() * 256);
+			let pieCtx = $('#pieChart');
+			let pieChart = new Chart(pieCtx, {
+				type : 'pie',
+				data : {
+					labels : [ '수입', '지출' ], //항목(범주)
+					datasets : [ {
+						backgroundColor : [ 'rgb(' + randomColor1 + ','
+								+ randomColor2 + ',' + randomColor3 + ')' ],
+						borderColor : [ 'rgb(' + randomColor1 + ','
+								+ randomColor2 + ',' + randomColor3 + ')' ],
+						data : [ data.수입, data.지출 ]
+					//데이터
+					}]
+				},
+				options : {}
+			});
+		}
+	});
 </script>
 </html>
