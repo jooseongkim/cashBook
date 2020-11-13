@@ -12,4 +12,13 @@
 	where id=#{id}
 	</select>
 	
+	<insert id="insertMember" parameterType="kr.co.gdu.cash.vo.Member">
+	insert into member(
+	id,
+	pw
+	) values (
+	#{id},
+	#{pw}
+	)
+	</insert>
 </mapper>
