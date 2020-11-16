@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>Chart 1</h1>
+	<h1>2019년 총 수입 / 지출</h1>
 	<!--차트1 생성-->
 	<div>
 		<canvas id="pieChart"></canvas>
