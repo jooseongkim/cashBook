@@ -18,8 +18,8 @@ public class MemberRestService {
 		return memberRestMapper.selectMemberId(id);
 	}
 	
-	public Map<String, Object> getTotalMonthlyExpendituresByYear() {
-		return memberRestMapper.selectTotalMonthlyExpendituresByYear();
+	public Map<String, Object> getTotalMonthlyExpendituresByYear(int year) {
+		return memberRestMapper.selectTotalMonthlyExpendituresByYear(year);
 	}
 	
 	public Map<String, Object> getTotalOutAndInByYear(int year) {

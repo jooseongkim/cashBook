@@ -9,8 +9,22 @@
 		FROM member
 		WHERE id = #{id}
 	</select>
-	<select id="selectTotalMonthlyExpendituresByYear"
+	<!--pie -->
+	<select id="selectTotalOutAndInByYear" parameterType="int"
 		resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) '년',
+		sum(case when
+		cashbook_kind='수입' then cashbook_price END) '수입',
+		sum(case when
+		cashbook_kind='지출' then cashbook_price END) '지출'
+		FROM cashbook
+		WHERE
+		YEAR(cashbook_date) = #{year}
+		GROUP BY Year(cashbook_date)
+	</select>
+	<!--bar -->
+	<select id="selectTotalMonthlyExpendituresByYear"
+		parameterType="int" resultType="java.util.Map">
 		SELECT
 		YEAR(cashbook_date) AS year,
 		sum(case when
@@ -30,29 +44,19 @@
 		sum(case when
 		month(cashbook_date)=8 then cashbook_price END) August,
 		sum(case when
-		month(cashbook_date)=9 then cashbook_price END) September,
+		month(cashbook_date)=9 then cashbook_price END)
+		September,
 		sum(case
-		when month(cashbook_date)=10 then cashbook_price END) October,
-		sum(case when month(cashbook_date)=11 then cashbook_price END)
+		when month(cashbook_date)=10 then cashbook_price
+		END) October,
+		sum(case when month(cashbook_date)=11 then cashbook_price
+		END)
 		November,
 		sum(case when month(cashbook_date)=12 then cashbook_price
 		END) December
 		FROM cashbook
-		WHERE YEAR(cashbook_date) = 2019
+		WHERE YEAR(cashbook_date) = #{year}
 		AND
 		cashbook_kind = "지출" GROUP BY Year(cashbook_date)
-	</select>
-
-	<select id="selectTotalOutAndInByYear" parameterType="int"
-		resultType="java.util.Map">
-		SELECT YEAR(cashbook_date) '년',
-		sum(case when
-		cashbook_kind='수입' then cashbook_price END) '수입',
-		sum(case when
-		cashbook_kind='지출' then cashbook_price END) '지출'
-		FROM cashbook
-		WHERE
-		YEAR(cashbook_date) = #{year}
-		GROUP BY Year(cashbook_date)
 	</select>
 </mapper>

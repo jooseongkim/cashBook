@@ -27,14 +27,13 @@ public class MemberRestController {
 	}
 
 	@GetMapping("/totalOutAndInByYear/{year}")
-	public Map<String, Object> totalOutAndInByYear(@PathVariable
-			(name = "year") int year) {
+	public Map<String, Object> totalOutAndInByYear(@PathVariable(name = "year") int year) {
 		return memberRestService.getTotalOutAndInByYear(year);
 	}
 
-	@GetMapping("/totalMonthlyExpendituresByYear") // 연도별 월간 총 지출액 금액
-	public Map<String, Object> totalMonthlyExpendituresByYear() {
-		return memberRestService.getTotalMonthlyExpendituresByYear();
+	@GetMapping("/totalMonthlyExpendituresByYear/{year}") // 연도별 월간 총 지출액 금액
+	public Map<String, Object> totalMonthlyExpendituresByYear(@PathVariable(name = "year") int year) {
+		return memberRestService.getTotalMonthlyExpendituresByYear(year);
 	}
 
 }
