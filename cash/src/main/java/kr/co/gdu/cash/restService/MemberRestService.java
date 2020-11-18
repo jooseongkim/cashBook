@@ -25,4 +25,11 @@ public class MemberRestService {
 	public Map<String, Object> getTotalOutAndInByYear(int year) {
 		return memberRestMapper.selectTotalOutAndInByYear(year);
 	}
+	
+	public Map<String, Object> getLineDataSet(int year) {
+		return memberRestMapper.lineDataset(year);
+	}
+	public Map<String, Object> getRadarDataSet() {
+		return memberRestMapper.RadarDataSet();
+	}
 }

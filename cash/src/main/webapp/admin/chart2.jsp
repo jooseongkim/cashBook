@@ -8,21 +8,24 @@
 <title>Insert title here</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+	href="https://www.chartjs.org/samples/latest/style.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
 	<h1 style="text-align: center;">연도별 월간 총 지출액</h1>
 	<!--차트1 생성-->
-	<div class="input-group mb-3">
-		<input type="text" placeholder="연도 입력"  id="year">
-		<button id="totalOutAndInByYear" type="button">Go</button>
+	<div class="content">
+		<div class="input-group mb-3">
+			<input type="text" placeholder="연도 입력"  id="year">
+			<button id="totalOutAndInByYear" type="button">Go</button>
+		</div>
+		<div >
+			<canvas id="chart2"></canvas>
+		</div>	
 	</div>
-	<div>
-		<canvas id="chart2"></canvas>
-	</div>
-	<!--table-->
-	<div></div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">

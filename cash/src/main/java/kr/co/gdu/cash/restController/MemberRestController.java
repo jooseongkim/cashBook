@@ -35,5 +35,12 @@ public class MemberRestController {
 	public Map<String, Object> totalMonthlyExpendituresByYear(@PathVariable(name = "year") int year) {
 		return memberRestService.getTotalMonthlyExpendituresByYear(year);
 	}
-
+	@GetMapping("/lineDataset/{year}")
+	public Map<String, Object> lineDataset(@PathVariable(name = "year") int year) {
+		return memberRestService.getLineDataSet(year);
+	}
+	@GetMapping("/RadarDataSet")
+	public Map<String, Object> radarDataSet() {
+		return memberRestService.getRadarDataSet();
+	}
 }

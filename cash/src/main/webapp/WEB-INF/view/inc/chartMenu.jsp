@@ -10,4 +10,5 @@
 	<a style="font-weight: bold;" href="/admin/chart7.jsp">Chart 7</a>
 	<a style="font-weight: bold;" href="/admin/chart8.jsp">Chart 8</a>
 	<a style="font-weight: bold;" href="/admin/chart9.jsp">Chart 9</a>
+	<a style="font-weight: bold;" href="/admin/chart10.jsp">Chart10</a>
 </div>

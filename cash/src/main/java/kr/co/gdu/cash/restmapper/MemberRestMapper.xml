@@ -22,6 +22,44 @@
 		YEAR(cashbook_date) = #{year}
 		GROUP BY Year(cashbook_date)
 	</select>
+	<!--line-dateSet -->
+	<select id="lineDataset" parameterType="int"
+		resultType="java.util.Map">
+		
+	SELECT
+		YEAR(cashbook_date) AS year,
+		sum(case when
+		month(cashbook_date)=1 then cashbook_price END) January,
+		sum(case when
+		month(cashbook_date)=2 then cashbook_price END) February,
+		sum(case when
+		month(cashbook_date)=3 then cashbook_price END) March,
+		sum(case when
+		month(cashbook_date)=4 then cashbook_price END) April,
+		sum(case when
+		month(cashbook_date)=5 then cashbook_price END) May,
+		sum(case when
+		month(cashbook_date)=6 then cashbook_price END) June,
+		sum(case when
+		month(cashbook_date)=7 then cashbook_price END) July,
+		sum(case when
+		month(cashbook_date)=8 then cashbook_price END) August,
+		sum(case when
+		month(cashbook_date)=9 then cashbook_price END)
+		September,
+		sum(case
+		when month(cashbook_date)=10 then cashbook_price
+		END) October,
+		sum(case when month(cashbook_date)=11 then cashbook_price
+		END)
+		November,
+		sum(case when month(cashbook_date)=12 then cashbook_price
+		END) December
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+		AND
+		cashbook_kind = "수입" GROUP BY Year(cashbook_date)
+	</select>
 	<!--bar -->
 	<select id="selectTotalMonthlyExpendituresByYear"
 		parameterType="int" resultType="java.util.Map">
@@ -58,5 +96,14 @@
 		WHERE YEAR(cashbook_date) = #{year}
 		AND
 		cashbook_kind = "지출" GROUP BY Year(cashbook_date)
+	</select>
+	
+	<!--radar-->
+	<select id="RadarDataSet" resultType="java.util.Map">
+		SELECT YEAR(cashbook_date) '년',
+		sum(case when cashbook_kind='수입' then cashbook_price END)
+		-sum(case when cashbook_kind='지출' then cashbook_price END) '수익'
+		FROM cashbook
+		GROUP BY Year(cashbook_date)
 	</select>
 </mapper>

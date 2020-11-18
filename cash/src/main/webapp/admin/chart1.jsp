@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+	href="https://www.chartjs.org/samples/latest/style.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>2019년 총 수입 / 지출</h1>
+	<h1 style="text-align: center;">2019년 총 수입 / 지출</h1>
 	<!--차트1 생성-->
-	<div>
+	<div class="content">
 		<canvas id="pieChart"></canvas>
 	</div>
 	<!--table-->
