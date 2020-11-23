@@ -1,5 +1,6 @@
 package kr.co.gdu.cash.restController;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,16 @@ public class MemberRestController {
 	public Map<String, Object> lineDataset(@PathVariable(name = "year") int year) {
 		return memberRestService.getLineDataSet(year);
 	}
-	@GetMapping("/RadarDataSet")
-	public Map<String, Object> radarDataSet() {
+	@GetMapping("/radarDataSet")
+	public List<Map<String, Object>> radarDataSet() {
 		return memberRestService.getRadarDataSet();
+	}
+	@GetMapping("/totalYearExpenditures")
+	public List<Map<String, Object>> totalYearExpenditures() {
+		return memberRestService.getTotalYearExpenditures();
+	}
+	@GetMapping("/TotalYearInCom")
+	public List<Map<String, Object>> TotalYearInCom() {
+		return memberRestService.getTotalYearInCom();
 	}
 }

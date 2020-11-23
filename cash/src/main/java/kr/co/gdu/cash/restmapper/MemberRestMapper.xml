@@ -9,7 +9,7 @@
 		FROM member
 		WHERE id = #{id}
 	</select>
-	<!--pie -->
+	<!--연도별 수입/지출 합계v -->
 	<select id="selectTotalOutAndInByYear" parameterType="int"
 		resultType="java.util.Map">
 		SELECT YEAR(cashbook_date) '년',
@@ -22,10 +22,9 @@
 		YEAR(cashbook_date) = #{year}
 		GROUP BY Year(cashbook_date)
 	</select>
-	<!--line-dateSet -->
+	<!--연도별 월간 총 수입v -->
 	<select id="lineDataset" parameterType="int"
 		resultType="java.util.Map">
-		
 	SELECT
 		YEAR(cashbook_date) AS year,
 		sum(case when
@@ -60,7 +59,7 @@
 		AND
 		cashbook_kind = "수입" GROUP BY Year(cashbook_date)
 	</select>
-	<!--bar -->
+	<!--연도별 월간 총 지출액v -->
 	<select id="selectTotalMonthlyExpendituresByYear"
 		parameterType="int" resultType="java.util.Map">
 		SELECT
@@ -98,12 +97,65 @@
 		cashbook_kind = "지출" GROUP BY Year(cashbook_date)
 	</select>
 	
-	<!--radar-->
-	<select id="RadarDataSet" resultType="java.util.Map">
+	<!--연도별 수익(수입-지출)v-->
+	<select id="radarDataSet" resultType="java.util.Map">
 		SELECT YEAR(cashbook_date) '년',
 		sum(case when cashbook_kind='수입' then cashbook_price END)
 		-sum(case when cashbook_kind='지출' then cashbook_price END) '수익'
 		FROM cashbook
 		GROUP BY Year(cashbook_date)
+	</select>
+	
+	<!--연도별 지출 합계v-->
+	<select id="selectTotalYearExpenditures" resultType="java.util.Map">
+	SELECT 
+		YEAR(cashbook_date) 연도,
+		SUM(cashbook_price) 지출
+		FROM cashbook WHERE cashbook_kind='지출' GROUP BY YEAR(cashbook_date);
+	</select>
+	
+	<!--연도별 수입 합계v-->
+	<select id="selectTotalYearInCome" resultType="java.util.Map">
+	SELECT 
+		YEAR(cashbook_date) 연도,
+		SUM(cashbook_price) 수입
+		FROM cashbook WHERE cashbook_kind='수입' GROUP BY YEAR(cashbook_date);
+	</select>
+	
+	<!--월별 수입 평균v-->
+	<select id="selectAvgMontlyIncome" resultType="java.util.Map">
+		SELECT 
+			MONTH(cashbook_date) 월, 
+			AVG(cashbook_price) 수입
+		FROM cashbook 
+			WHERE cashbook_kind='수입' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
+	</select>
+	
+	<!--월별 지출 평균v-->
+	<select id="selectAvgMontlyExpenditures" resultType="java.util.Map">
+		SELECT 
+			MONTH(cashbook_date) 월, 
+			AVG(cashbook_price) 지출
+		FROM cashbook 
+			WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
+	</select>
+	
+	<!--연도별 수입 평균-->
+	<select id="selectAvgTotalYearIncome" resultType="java.util.Map">
+	SELECT 
+		YEAR(cashbook_date) 연도,
+		AVG(cashbook_price) 수입
+		FROM cashbook WHERE cashbook_kind='수입' GROUP BY YEAR(cashbook_date);
+	</select>
+	
+	<!--월별 수익 현황-->
+	<select id="selectMontlyNetIncome" resultType="java.util.Map">
+	SELECT
+		MONTH(cashbook_date) 월, 
+		SUM(case when cashbook_kind='수입' then cashbook_price END)-SUM(case when cashbook_kind='지출' then cashbook_price END) '수익'
+		FROM cashbook Where YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 </mapper>

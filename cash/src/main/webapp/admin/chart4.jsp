@@ -21,108 +21,57 @@
 	<h1 style="text-align: center;">Chart 4</h1>
 	<!--차트 생성-->
 
-	<div class="content">
-		<div class="wrapper" style="max-width: 512px; margin: auto">
+	<div >
+		<div class="wrapper" style="max-width: 1560px; margin: auto">
 			<canvas id="chart4"></canvas>
 		</div>
-		<div id="chart-analyser" class="analyser"></div>
 	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">
-	$.ajax({
-		url : '/radarDataSet/',
-		
-		console.log(data);
-	var presets = window.chartColors;
-	var utils = Samples.utils;
-	var inputs = {
-		min : 8,
-		max : 16,
-		count : 8,
-		decimals : 2,
-		continuity : 1
-	};
+$.ajax({
+		url : '/radarDataSet',
+		type : 'get',
+		success : function(data) {
+			console.log(data);
 
-	function generateData() {
-		// radar chart doesn't support stacked values, let's do it manually
-		var values = utils.numbers(inputs);
-		inputs.from = values;
-		return values;
-	}
-
-	function generateLabels() {
-		return utils.months({
-			count : inputs.count
+		let getData = [];
+		$(data).each(function(index, item){
+			getData.push(item.수익);
+			console.log(item.수익);
+		});
+			
+		let randomColor1 = Math.floor(Math.random() * 256);
+		let randomColor2 = Math.floor(Math.random() * 256);
+		let randomColor3 = Math.floor(Math.random() * 256);
+		randomcolor = ['rgba(' + randomColor1 + ',' + randomColor2 + ',' + randomColor3 + ',0.2)']
+		let radarCtx = $('#chart4');
+		let chart = new Chart(radarCtx, {
+			type: 'radar',
+			data: {
+				labels: ['2018','2019','2020'],
+				datasets: [{
+					label: '연도별 수익 현황',
+					backgroundColor: [randomcolor,randomcolor,randomcolor],
+					borderColor: [randomcolor,randomcolor,randomcolor],
+					pointBackgroundColor: [randomcolor,randomcolor,randomcolor],
+					
+					data: getData
+				}]
+			},
+			options: {
+				legend: {
+					position: 'top',
+				},
+				scale: {
+					ticks: {
+						beginAtZero: true
+					}
+				}
+			}
 		});
 	}
+});
 
-	utils.srand(42);
-
-	var data = {
-		labels : generateLabels(),
-		datasets : [ {
-			backgroundColor : utils.transparentize(presets.red),
-			borderColor : presets.red,
-			data : generateData(),
-			label : 'D0'
-		}, {
-			backgroundColor : utils.transparentize(presets.orange),
-			borderColor : presets.orange,
-			data : generateData(),
-			hidden : true,
-			label : 'D1',
-			fill : '-1'
-		}, {
-			backgroundColor : utils.transparentize(presets.yellow),
-			borderColor : presets.yellow,
-			data : generateData(),
-			label : 'D2',
-			fill : 1
-		}, {
-			backgroundColor : utils.transparentize(presets.green),
-			borderColor : presets.green,
-			data : generateData(),
-			label : 'D3',
-			fill : false
-		}, {
-			backgroundColor : utils.transparentize(presets.blue),
-			borderColor : presets.blue,
-			data : generateData(),
-			label : 'D4',
-			fill : '-1'
-		}, {
-			backgroundColor : utils.transparentize(presets.purple),
-			borderColor : presets.purple,
-			data : generateData(),
-			label : 'D5',
-			fill : '-1'
-		} ]
-	};
-
-	var options = {
-		maintainAspectRatio : true,
-		spanGaps : false,
-		elements : {
-			line : {
-				tension : 0.000001
-			}
-		},
-		plugins : {
-			filler : {
-				propagate : false
-			},
-			'samples-filler-analyser' : {
-				target : 'chart-analyser'
-			}
-		}
-	};
-
-	var chart = new Chart('chart4', {
-		type : 'radar',
-		data : [data.수익],
-		options : options
-	});
-	});
 </script>
 </html>
