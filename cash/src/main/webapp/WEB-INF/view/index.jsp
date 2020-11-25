@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title hnoere</title>
+<title>Index</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>

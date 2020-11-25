@@ -14,14 +14,13 @@
 	<h1 class="h1 font">My CashBook Project</h1>
 	<br>
 	<br>
-			<a href="/admin/index">메인페이지</a>
-			<a href="/admin/cashbookByMonth">월별 가계부</a>
-			<a href="/admin/noticeList">공지사항</a>
-			<a href="/admin/cashbookList/1">가계부 리스트</a>
-			<a href="http://localhost:8080/cashStats.html">연도별 월간 총 지출액</a>
-			<a href="/admin/chart1.jsp">차트</a>
-			<a href="/admin/addMember">사용자 추가</a>
-			<a href="/admin/logout">logout</a>
+			<a href="${pageContext.request.contextPath}/admin/index">메인페이지</a>
+			<a href="${pageContext.request.contextPath}/admin/cashbookByMonth">월별 가계부</a>
+			<a href="${pageContext.request.contextPath}/admin/noticeList/1">공지사항</a>
+			<a href="${pageContext.request.contextPath}/admin/cashbookList/1">가계부 리스트</a>
+			<a href="${pageContext.request.contextPath}/admin/chart1.jsp">차트</a>
+			<a href="${pageContext.request.contextPath}/admin/addMember">사용자 추가</a>
+			<a href="${pageContext.request.contextPath}/admin/logout">logout</a>
 	</div >
 </body>
 </html>

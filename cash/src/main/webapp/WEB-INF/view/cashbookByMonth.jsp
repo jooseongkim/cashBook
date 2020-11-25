@@ -37,9 +37,9 @@
    </div>
 
 	<h3>
-	<a href="/admin/cashbookByMonth/pre/${currentYear}/${currentMonth-1}">[이전달]</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/pre/${currentYear}/${currentMonth-1}">[이전달]</a>
 	${currentYear }년${currentMonth}월
-	<a href="/admin/cashbookByMonth/next/${currentYear}/${currentMonth+1}">[다음달]</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/next/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
 	
 	<div>
@@ -72,21 +72,21 @@
 								<!-- 일요일 -->
 								<c:if test="${i % 7 == 1}">
 									<div class="sunday">
-										<a href="/admin/cashbookByDay/sun/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/sun/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 								
 								<!-- 토요일 -->
 								<c:if test="${i % 7 == 0}">
 									<div class="saturday">
-										<a href="/admin/cashbookByDay/sat/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/sat/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 								
 								<!-- 평일 (월요일 ~ 금요일) -->
 								<c:if test="${i % 7 != 1 && i % 7 != 0}">
 									<div class="weekday">
-										<a href="/admin/cashbookByDay/wek/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/wek/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 							

@@ -37,7 +37,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>addMember</h1>
-	<form method="post" action="/admin/addMember">
+	<form method="post" action="${pageContext.request.contextPath}/admin/addMember">
 		<div>
 			ID : <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
 		</div>

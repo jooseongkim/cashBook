@@ -21,5 +21,7 @@ public interface NoticeMapper {
 	int modifyNotice(Notice notice);
 	
 	int removeNotice(int noticeId);
+
+	int selectNoticeCount();
 	
 }

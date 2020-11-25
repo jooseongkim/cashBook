@@ -27,8 +27,14 @@
 		desc
 		limit #{beginRow}, #{rowPerPage}
 	</select>
+		<select id="selectNoticeCount" resultType="Integer">
+		SELECT COUNT(*) FROM notice
+	</select>
 	<!--입력 -->
 	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		<selectKey resultType="int" keyProperty="noticeId" order="AFTER">
+			SELECT LAST_INSERT_ID()		
+		</selectKey>
 		INSERT INTO notice(
 		notice_title,
 		notice_content,
@@ -47,18 +53,36 @@
 		notice_content = #{noticeContent}
 		WHERE
 		notice_id = #{noticeId}
-	</update>
+	</update>	
+	<resultMap type="kr.co.gdu.cash.vo.Notice" id="selectNoticeOneResult">
+		<result property="noticeId" column="notice_id" />
+		<result property="noticeTitle" column="notice_title" />
+		<result property="noticeContent" column="notice_Content" />
+		<result property="noticeDate" column="notice_date" />
+	<collection property="noticeFileList" ofType="kr.co.gdu.cash.vo.NoticeFile">
+		 <result property="noticeFileId" column="noticefile_id"/>
+         <result property="noticeId" column="notice_id"/>
+         <result property="noticeFileName" column="noticefile_name"/>
+         <result property="noticeFileType" column="noticefile_type"/>
+         <result property="noticeFileSize" column="noticefile_size"/>
+	</collection>
+	</resultMap>
 	<!--상세보기 -->
 	<select id="selectNoticeOne"
-		resultType="kr.co.gdu.cash.vo.Notice" parameterType="Integer">
+		resultMap="selectNoticeOneResult" parameterType="int">
 		select
-		notice_id as
-		noticeId,
-		notice_title noticeTitle,
-		notice_content noticeContent,
-		notice_date noticeDate
-		from notice
-		where notice_id = #{noticeId}
+		n.notice_id, 
+		n.notice_title,
+		n.notice_content,
+		n.notice_date,
+		nf.noticefile_id,
+		nf.noticefile_name,
+		nf.noticefile_size,
+		nf.noticefile_type
+		FROM notice n
+		LEFT OUTER JOIN noticefile nf
+		ON n.notice_id = nf.notice_id
+		where n.notice_id = #{noticeId}
 	</select>
 
 	<!--삭제-->
@@ -66,4 +90,5 @@
 	delete from notice
 	where notice_id = #{noticeId}
 	</delete>
+	
 </mapper>

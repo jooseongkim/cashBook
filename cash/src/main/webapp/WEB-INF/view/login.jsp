@@ -112,7 +112,7 @@
 </head>
 <body class="body" style="margin-top: 100px">
 	<!--로그인-->
-	<form action="/login" method="post" class="box">
+	<form action="${pageContext.request.contextPath}/login" method="post" class="box">
 		<h3 class="h3">Login</h3>
 		<div class="center">
 			<input type="text" name="id" placeholder="ID" class="label left">

@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>가계부 리스트</h1>
-	<a href="/admin/cashbookListExcel">전체 가계부 리스트를 출력</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">전체 가계부 리스트를 출력</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -40,7 +40,8 @@
 		</tbody>
 	</table>
 	<div>
-		<a href="">[이전]</a> <a href="/admin/cashbookList">[다음]</a>
+		<a href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage-1}">[이전]</a>
+		 <a href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage+1}">[다음]</a>
 	</div>
 </body>
 </html>
