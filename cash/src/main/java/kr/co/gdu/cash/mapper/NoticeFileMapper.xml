@@ -19,9 +19,9 @@
 	 WHERE notice_id=#{noticeId}
 	 </delete>
 	 	
-	<delete id="deleteNoticeFileOne" parameterType="int">
+	<delete id="deleteNoticeFileOne" parameterType="String">
 		DELETE FROM noticefile
-		WHERE noticefile_id = #{noticeFileId}
+		WHERE noticefile_name = #{noticeFileName}
 	</delete>
 	
 	<!-- 선택한 공지사항의 파일 이름들 가져오기 -->

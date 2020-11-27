@@ -38,7 +38,7 @@ footer span
   color: #AAA;
 }
 
-div.container
+div.containerMenu
 {
     font-family: Raleway;
     margin: auto;
@@ -46,7 +46,7 @@ div.container
 	text-align: center;
 }
 
-div.container a
+div.containerMenu a
 {
     color: #FFF;
     text-decoration: none;
@@ -83,7 +83,6 @@ div.container a
 {
     background: #00bcd4;
 }
-
 .teal
 {
     background: #009688;

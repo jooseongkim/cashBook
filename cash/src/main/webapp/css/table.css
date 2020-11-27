@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+table.type10 {
+  background-color:white;
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 10px;
+}
+table.type10 thead th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #fff;
+  background: #e7708d;
+  margin: 20px 10px;
+}
+table.type10 tbody th {
+  width: 150px;
+  padding: 10px;
+}
+table.type10 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+}
+table.type10 .even {
+  background: #fdf3f5;
+}
+/*테이블*/
+HTML CSSResult
+EDIT ON
+table.type05 {
+ 
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  margin: 20px 10px;
+}
+table.type05 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: silver;
+  color: white;
+}
+table.type05 td {
+	background-color:white;
+  width: 350px;
+  padding: 10px;
+  text-align:center;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 월별 지출액  */
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+#pricing{
+  width: 980px;
+  margin: 100px auto;
+  font-family: 'Open Sans', Helvetica;
+}
+
+.price_card{
+  width: 300px;
+  background: rgb(255, 255, 255);
+  display: inline-table;
+  top: 0;
+}
+.price_card:not(:last-child){
+  margin-right: 40px;
+}
+.header{
+  color: rgb(255, 255, 255);
+}
+.alpha .header{
+  background: silver;
+}
+.bravo .header{
+  background: rgb(246, 77, 77);
+}
+.charlie .header{
+  background: rgb(48, 219, 181);
+}
+.price{
+  width: 100%;
+  font-size: 60px;
+  font-weight: 300;
+  display: block;
+  text-align: center;
+  padding: 30px 0 10px;
+}
+.name{
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  padding: 0 0 30px;
+}
+.features{
+  list-style: none;
+  text-align: center;
+  color: rgb(138, 138, 138);
+  margin: 0;
+  padding: 0;
+}
+.features li{
+  margin: 0 35px;
+  padding: 20px 15px;
+  width: 200px;
+}
+.features li:not(:last-child){
+  border: 1px solid rgb(242, 242, 242);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+

@@ -1,25 +1,23 @@
 
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-<link rel="stylesheet" href="/css/indexAndMenu.css" />
 </head>
 <body >
-	<div class="container teal borderYtoX">
+	<div class="containerMenu cyan borderYtoX">
 	<h1 class="h1 font">My CashBook Project</h1>
 	<br>
 	<br>
-			<a href="${pageContext.request.contextPath}/admin/index">¸ÞÀÎÆäÀÌÁö</a>
-			<a href="${pageContext.request.contextPath}/admin/cashbookByMonth">¿ùº° °¡°èºÎ</a>
-			<a href="${pageContext.request.contextPath}/admin/noticeList/1">°øÁö»çÇ×</a>
-			<a href="${pageContext.request.contextPath}/admin/cashbookList/1">°¡°èºÎ ¸®½ºÆ®</a>
-			<a href="${pageContext.request.contextPath}/admin/chart1.jsp">Â÷Æ®</a>
-			<a href="${pageContext.request.contextPath}/admin/addMember">»ç¿ëÀÚ Ãß°¡</a>
+			<a href="${pageContext.request.contextPath}/admin/index">ë©”ì¸íŽ˜ì´ì§€</a>
+			<a href="${pageContext.request.contextPath}/admin/cashbookByMonth">ì›”ë³„ ê°€ê³„ë¶€</a>
+			<a href="${pageContext.request.contextPath}/admin/noticeList/1">ê³µì§€ì‚¬í•­</a>
+			<a href="${pageContext.request.contextPath}/admin/cashbookList/1">ê°€ê³„ë¶€ ë¦¬ìŠ¤íŠ¸</a>
+			<a href="${pageContext.request.contextPath}/admin/chart1.jsp">ì°¨íŠ¸</a>
+			<a href="${pageContext.request.contextPath}/admin/addMember">ì‚¬ìš©ìž ì¶”ê°€</a>
 			<a href="${pageContext.request.contextPath}/admin/logout">logout</a>
 	</div >
 </body>

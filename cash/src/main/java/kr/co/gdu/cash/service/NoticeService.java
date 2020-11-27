@@ -22,8 +22,12 @@ import kr.co.gdu.cash.vo.NoticeForm;
 @Service
 @Transactional
 public class NoticeService {
+	// aws 서버용
 	 private final String PATH = "/home/ubuntu/tomcat9/webapps/cash/upload/";
-	//private final String PATH = "C:\\Users\\wntjd\\git\\cashBook\\cash\\src\\main\\webapp\\upload\\";
+	// 집
+	// private final String PATH = "C:\\Users\\wntjd\\git\\cashBook\\cash\\src\\main\\webapp\\upload\\";
+	// 학원
+	// private final String PATH = "C:\\Users\\GD\\Desktop\\jsgit\\cashbook\\cashBook\\cash\\src\\main\\webapp\\upload\\";
 	@Autowired
 	private NoticeMapper noticeMapper;
 	@Autowired

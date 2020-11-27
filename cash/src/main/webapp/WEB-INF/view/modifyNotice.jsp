@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 수정</title>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/indexAndMenu.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -20,7 +22,7 @@
 		})
 
 
-		$('#modifyNoticeBtn').click(function(){
+		$('#modifyBtn').click(function(){
 			if($('#noticeTitle').val().lenth < 1){
 				alert('제목을 입력해 주세요.');
 				return;
@@ -29,7 +31,7 @@
 				return;
 			}
 			let ck = true;
-			$('.noticeFileList').each(function(index, item){
+			$('.noticeFile').each(function(index, item){
 				console.log($(item).val());
 				if($(item).val() == '') {
 					ck = false;
@@ -62,7 +64,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea name="noticeContent" cols="50" rows="10" id="noticeConent"> ${notice.noticeContent}</textarea></td>
+					<td><textarea name="noticeContent" cols="50" rows="10" id="noticeContent"> ${notice.noticeContent}</textarea></td>
 				</tr>
 				<tr>
 					<td>생성 날짜</td>
@@ -76,7 +78,7 @@
 						href="${pageContext.request.contextPath}/upload/${nf.noticeFileName}">${nf.noticeFileName}</a>
 						<c:if test="${not empty nf.noticeFileName}">
 							<a
-								href="${pageContext.request.contextPath }/removeFile/${notice.noticeId}/${nf.noticeFileName}">
+								href="${pageContext.request.contextPath }/admin/removeNoticefileOne/${notice.noticeId}/${nf.noticeFileName}">
 								삭제</a>
 						</c:if></td>
 				</tr>

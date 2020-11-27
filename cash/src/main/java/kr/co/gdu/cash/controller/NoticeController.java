@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.gdu.cash.service.NoticeService;
 import kr.co.gdu.cash.vo.Notice;
+import kr.co.gdu.cash.vo.NoticeFile;
 import kr.co.gdu.cash.vo.NoticeForm;
 
 @Controller
@@ -87,6 +88,16 @@ public class NoticeController {
 	public String modifyNotice(Model model, NoticeForm noticeForm) {
 		noticeService.modifyNotice(noticeForm);
 		return "redirect:/admin/noticeOne/" + noticeForm.getNoticeId();
+	}
+	
+	// 파일 한개 삭제 8
+	@GetMapping("/admin/removeNoticefileOne/{noticeId}/{noticeFileName}")
+	public String removeNoticeFileOne(
+			@PathVariable(value = "noticeId") int noticeId,
+			@PathVariable(value = "noticeFileName") String noticeFileName
+			) {
+		noticeService.removeNoticefileOne(noticeFileName);
+		return "redirect:/admin/modifyNotice/"+ noticeId; 
 	}
 }
 

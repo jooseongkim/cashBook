@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/indexAndMenu.css" />
 <style type="text/css">
 .center {
 	text-align: center;
