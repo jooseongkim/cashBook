@@ -12,14 +12,14 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1 class="text-center">Index</h1>
+	<h1 class="text-center" style="font-family:sans-serif;">Main</h1>
 	<!-- 공지 -->
 	<div class="pricing-box-container">
 		<table class="type05">
 			<thead>
 				<tr>
-					<th>notice_id</th>
-					<th>notice_title</th>
+					<th>공지 번호</th>
+					<th>제목</th>
 					<!-- <th>notice_content</th> -->
 				</tr>
 			</thead>

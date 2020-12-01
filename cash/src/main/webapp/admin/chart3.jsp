@@ -14,6 +14,7 @@
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <script
 	src="https://www.chartjs.org/samples/latest/charts/area/analyser.js"></script>
+	<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 
 <body>
@@ -37,7 +38,7 @@
 <script>
 $('#insert').click(function(){
 	$.ajax({
-		url : '/lineDataset/'+$('#year').val(),
+		url : '${pageContext.request.contextPath}/lineDataset/'+$('#year').val(),
 		type : 'get',
 		success : function(data) {
 	console.log(data);

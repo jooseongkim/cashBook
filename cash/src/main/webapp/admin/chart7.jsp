@@ -12,6 +12,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 	<h1>Chart 7</h1>
 	<!--차트1 생성-->
 	<div>
@@ -23,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">
 	$.ajax({
-		url:'',
+		url:'${pageContext.request.contextPath}/',
 		type:'',
 		data:'',
 		success:funtion(data){

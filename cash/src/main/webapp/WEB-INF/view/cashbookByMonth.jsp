@@ -44,8 +44,8 @@ td {
 			<h1 style="text-align: center; font-weight: bolder;">cashbookByMonth</h1>
 			<!-- 다이어리 -->
 			<h3 style="text-align: center">
-				<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/pre/${currentYear}/${currentMonth-1}">[이전달]</a>
-				${currentYear }년${currentMonth}월 <a href="${pageContext.request.contextPath}/admin/cashbookByMonth/next/${currentYear}/${currentMonth+1}">[다음달]</a>
+				<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}" class="btn btn-outline-success btn-lg">이전달</a>
+				${currentYear }년${currentMonth}월 <a href="${pageContext.request.contextPath}/admin/cashbookByMonth/next/${currentYear}/${currentMonth}" class="btn btn-outline-success btn-lg">다음달</a>
 			</h3>
 		</div>
 			<div class="col-2 div999 ">

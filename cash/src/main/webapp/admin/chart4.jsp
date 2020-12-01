@@ -14,6 +14,7 @@
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <script
 	src="https://www.chartjs.org/samples/latest/charts/area/analyser.js"></script>
+	<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
@@ -30,7 +31,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">
 $.ajax({
-		url : '/radarDataSet',
+		url : '${pageContext.request.contextPath}/radarDataSet',
 		type : 'get',
 		success : function(data) {
 			console.log(data);

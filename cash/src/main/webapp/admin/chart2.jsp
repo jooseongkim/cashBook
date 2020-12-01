@@ -10,6 +10,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css"
 	href="https://www.chartjs.org/samples/latest/style.css">
+	<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
@@ -32,7 +33,7 @@
 	$('#totalOutAndInByYear').click(
 			function() {
 				$.ajax({
-					url : '/totalMonthlyExpendituresByYear/'+$('#year').val(),
+					url : '${pageContext.request.contextPath}/totalMonthlyExpendituresByYear/'+$('#year').val(),
 					type : 'get',
 					success : function(data) {
 						let randomColor1 = Math.floor(Math.random() * 256);

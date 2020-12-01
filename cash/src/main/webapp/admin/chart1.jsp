@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css"
@@ -26,7 +27,7 @@
 <script type="text/javascript">
 
 	$.ajax({
-		url : '/totalOutAndInByYear/2019',
+		url : '${pageContext.request.contextPath}/totalOutAndInByYear/2019',
 		type : 'get',
 		success : function(data) {
 			let randomColor1 = Math.floor(Math.random() * 256);

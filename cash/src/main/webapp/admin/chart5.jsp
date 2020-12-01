@@ -10,6 +10,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
@@ -23,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script>
 	$.ajax({
-		url : '/totalYearExpenditures',
+		url : '${pageContext.request.contextPath}/totalYearExpenditures',
 		type : 'get',
 		success : function(data) {
 			console.log(data);

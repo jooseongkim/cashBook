@@ -14,6 +14,7 @@
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <script
 	src="https://www.chartjs.org/samples/latest/charts/area/analyser.js"></script>
+	<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 </head>
 <body>
@@ -28,7 +29,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script type="text/javascript">
 	$.ajax({
-		url:'/TotalYearInCom',
+		url:'${pageContext.request.contextPath}/TotalYearInCom',
 		type:'get',
 		success:function(data){
 			let getData = [];
