@@ -13,7 +13,7 @@
 	<br>
 	<br>
 			<a href="${pageContext.request.contextPath}/admin/index">메인페이지</a>
-			<a href="${pageContext.request.contextPath}/admin/cashbookByMonth">월별 가계부</a>
+			<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">월별 가계부</a>
 			<a href="${pageContext.request.contextPath}/admin/noticeList/1">공지사항</a>
 			<a href="${pageContext.request.contextPath}/admin/cashbookList/1">가계부 리스트</a>
 			<a href="${pageContext.request.contextPath}/admin/chart1.jsp">차트</a>

@@ -5,12 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>addCashbook</title>
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>addCashbook</h1>
+	<div class="center container">
 	<form method="post" action="${pageContext.request.contextPath}/admin/addCashbook">
-		<table border="1">
+		<table class="table">
 			<tr>
 				<td>cashbook_date</td>
 				<td>
@@ -49,5 +51,6 @@
 		</table>
 		<button type="submit">수입/지출 입력</button>
 	</form>
+	</div>
 </body>
 </html>

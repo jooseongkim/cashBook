@@ -44,8 +44,9 @@ td {
 			<h1 style="text-align: center; font-weight: bolder;">cashbookByMonth</h1>
 			<!-- 다이어리 -->
 			<h3 style="text-align: center">
-				<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}" class="btn btn-outline-success btn-lg">이전달</a>
-				${currentYear }년${currentMonth}월 <a href="${pageContext.request.contextPath}/admin/cashbookByMonth/next/${currentYear}/${currentMonth}" class="btn btn-outline-success btn-lg">다음달</a>
+				<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}" class="btn btn-outline-success btn-lg">이전달</a>
+				${currentYear }년${currentMonth}월 
+				<a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}" class="btn btn-outline-success btn-lg">다음달</a>
 			</h3>
 		</div>
 			<div class="col-2 div999 ">
@@ -68,8 +69,7 @@ td {
 			<tbody>
 				<tr class="days">
 					<!-- 이게 for문 대신. 1~31까지 -->
-					<c:forEach var="i" begin="1" end="${lastDay+(firstDayOfWeek-1) }"
-						step="1">
+					<c:forEach var="i" begin="1" end="${lastDay+(firstDayOfWeek-1) }" step="1">
 						<c:if test="${i-(firstDayOfWeek-1) < 1 }">
 							<td>&nbsp;</td>
 						</c:if>
@@ -95,8 +95,8 @@ td {
 										<a class="btn"
 											href="${pageContext.request.contextPath}/admin/cashbookByDay/wek/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
-								</c:if> <!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 --> <c:forEach var="c"
-									items="${cashList}">
+								</c:if> <!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 --> 
+								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1)== c.dday }">
 										<c:if test="${c.cashbookKind == '수입' }">
 											<div>수입 : ${c.cashbookPrice }</div>

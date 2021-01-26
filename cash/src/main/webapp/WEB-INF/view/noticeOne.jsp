@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>공지사항 상세 보기</title>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/indexAndMenu.css" />
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
 <style type="text/css">
 .center {
 	text-align: center;

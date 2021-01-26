@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Notice</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	
 $(document).ready(function(){
 	$('#addBtn').click(function(){
 		let html = '<div><input type="file" name="noticeFile" class="noticeFile"></div>';
@@ -49,8 +50,8 @@ $(document).ready(function(){
 	<form method="post" enctype="multipart/form-data"
 		action="${pageContext.request.contextPath}/admin/addNotice"
 		id="AddNoticeForm">
-		<div>
-			<table border="1">
+		<div class="center container">
+			<table class="table">
 				<tr>
 					<td>제목</td>
 					<td><input type="text" name="noticeTitle" placeholder="제목을 입력" id="noticeTitle"></td>

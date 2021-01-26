@@ -115,11 +115,11 @@
 	<form action="${pageContext.request.contextPath}/login" method="post" class="box">
 		<h3 class="h3">Login</h3>
 		<div class="center">
-			<input type="text" name="id" placeholder="ID" class="label left">
+			<input type="text" name="id" placeholder="goodee" class="label left">
 		</div>
 		<div>&nbsp;</div>
 		<div class="center">
-			<input type="password" name="pw" placeholder="PW" class="label left">
+			<input type="password" name="pw" placeholder="1234" class="label left">
 		</div>
 		<div>&nbsp;</div>
 		<div>

@@ -38,7 +38,7 @@ public class CashBookController {
 		return "cashbookList";
 	}
 
-	@PostMapping("/admin/addCashbook")
+	@PostMapping("/admin/addCashbook/now/{currentYear}/{currentMonth}/{currentDay}")
 	public String addCashbook(Cashbook cashbook) { // 커맨드객체
 		System.out.println(cashbook);
 		// System.out.println("cashbook 입력 :");
@@ -47,12 +47,16 @@ public class CashBookController {
 	}
 
 	// 지출 수입 입력
-	@GetMapping("/admin/addCashbook/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
-	public String addCashbook(Model model, @PathVariable(name = "currentYear", required = true) int currentYear,
+	@GetMapping("/admin/addCashbook/now/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
+	public String addCashbook(Model model, 
+			@PathVariable(name = "currentYear", required = true) int currentYear,
 			@PathVariable(name = "currentMonth", required = true) int currentMonth,
 			@PathVariable(name = "currentDay", required = true) int currentDay) {
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("currentYear", currentYear);
+		model.addAttribute("currentMonth", currentMonth);
+		model.addAttribute("currentDay", currentDay);
 		return "addCashbook"; // 포워딩 역할을 함.
 	}
 
@@ -70,7 +74,8 @@ public class CashBookController {
 
 	// 지출 수입 상세보기
 	@GetMapping("/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
-	public String cashbookByDay(Model model, @PathVariable(name = "target") String target,
+	public String cashbookByDay(Model model, 
+			@PathVariable(name = "target") String target,
 			@PathVariable(name = "currentYear", required = true) int currentYear,
 			@PathVariable(name = "currentMonth", required = true) int currentMonth,
 			@PathVariable(name = "currentDay", required = true) int currentDay) {
@@ -94,11 +99,12 @@ public class CashBookController {
 	}
 
 	// 월 별 가계부
-	@GetMapping(value = "/admin/cashbookByMonth")
+	@GetMapping("/admin/cashbookByMonth/{currentYear}/{currentMonth}")
 	// requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) =
 	// ("request.getParamater("paramMonth");)
-	public String cashbookByMonth(Model model, @RequestParam(name = "currentYear", defaultValue = "-1") int currentYear,
-			@RequestParam(name = "currentMonth", defaultValue = "-1") int currentMonth) {
+	public String cashbookByMonth(Model model, 
+			@PathVariable(name = "currentYear") int currentYear,
+			@PathVariable(name = "currentMonth") int currentMonth) {
 
 		// 1. 요청분석
 		/*

@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/WEB-INF/view/inc/css.jsp"></jsp:include>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -37,17 +39,21 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>addMember</h1>
-	<form method="post" action="${pageContext.request.contextPath}/admin/addMember">
-		<div>
-			ID : <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
-		</div>
-
-		<div>
-			PW : <input type="password" id="pw" name="pw" placeholder="비밀번호">
-		</div>
-		<div>
-			<button id="addMember" type="submit">회원가입</button>
-		</div>
-	</form>
+	<div class="center container">
+		<form method="post" action="${pageContext.request.contextPath}/admin/addMember">
+			<table class="table">
+			<tr>
+				<td>ID : <input type="text" id="id" name="id" placeholder="아이디를 입력하세요"></td>
+			</tr>
+	
+			<tr>
+				<td>PW : <input type="password" id="pw" name="pw" placeholder="비밀번호"></td>
+			</tr>
+			<tr>
+				<td><button id="addMember" type="submit" class="big-button">회원가입</button></td>
+			</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

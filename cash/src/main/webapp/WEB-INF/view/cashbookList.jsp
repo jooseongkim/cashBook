@@ -53,8 +53,7 @@
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1 class="center" style="font-weight: bolder;">가계부 리스트</h1>
 	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel" style="text-decoration: none;"
-	class="buttonLod"
-	>전체 가계부 리스트를 출력</a>
+	class="buttonLod" >전체 가계부 리스트를 출력</a>
 	<div >
 	<table border="1" class="type10">
 		<thead style="text-align: center">
